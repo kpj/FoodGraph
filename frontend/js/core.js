@@ -1,1 +1,3 @@
-foo
+$(function() {
+	G = setupGraph();
+});
