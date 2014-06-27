@@ -11,9 +11,9 @@ function setupGraph() {
 		element: '#graph',
 		with_labels: true,
 		weighted: true,
-		with_edge_labels: true,
+		with_edge_labels: false,
 		weights: 'weight',
-		weighted_stroke: true,
+		weighted_stroke: false,
 		layout_attr: {
 			charge: -1500,
 			linkDistance: 1,
