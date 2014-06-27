@@ -6,8 +6,9 @@ from bs4 import BeautifulSoup
 
 
 class UrlHandler(object):
-	def __init__(self, url):
+	def __init__(self, url, stop=-1):
 		self.url = url
+		self.stop = stop
 
 	def load_url(self, url):
 		req = urllib.request.Request(url)
@@ -18,10 +19,10 @@ class UrlHandler(object):
 		raise Exception('please implement me')
 
 class AlastraHandler(UrlHandler):
-	def __init__(self, type):
+	def __init__(self, type, stop=-1):
 		self._base = 'http://recipes2.alastra.com/%s' % type
-
-		self._ignore = ['kg', 'tsp', 'tbsp', 'cup', 'cups', 'l', 'g', 'oz', 'about', '/', '-', 'tablespoon', 'tablespoons', 'lb', 'ml', 'ts', 'tb', 'c']
+		self.stop = stop
+		self._ignore = ['kg', 'tbs', 'tsp', 'tbsp', 'cup', 'cups', 'l', 'g', 'oz', 'about', '/', '-', 'tablespoon', 'tablespoons', 'lb', 'ml', 'ts', 'tb', 'c']
 
 	def validate(self, url):
 		return re.match('[A-z0-9]+\.html', url) != None # I want a boolean
@@ -63,6 +64,7 @@ class AlastraHandler(UrlHandler):
 					ret.append(
 						self.parse_recipe('%s/%s' % (self._base, href))
 					)
+			if self.stop != -1 and self.stop <= len(ret): break
 		return ret
 
 if __name__ == '__main__':
