@@ -63,8 +63,6 @@ class AlastraHandler(UrlHandler):
 					ret.append(
 						self.parse_recipe('%s/%s' % (self._base, href))
 					)
-
-			if len(ret) == 3: break
 		return ret
 
 if __name__ == '__main__':
