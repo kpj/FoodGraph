@@ -12,7 +12,8 @@ function setupGraph() {
 		with_labels: true,
 		weighted: true,
 		with_edge_labels: true,
-		weighted_stroke: false,
+		weights: 'weight',
+		weighted_stroke: true,
 		layout_attr: {
 			charge: -1500,
 			linkDistance: 1,
