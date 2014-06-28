@@ -10,8 +10,24 @@ class RecipeParser(object):
 class AlastraParser(RecipeParser):
 	@staticmethod
 	def parse(text):
+		# cut out obviously wrong stuff
+		lines = text.split('\n')
+		first = True
+		for i, l in enumerate(lines):
+			if len(l) > 0:
+				if l[0].isupper():
+					if first:
+						first = False
+					else:
+						break
+		text = '\n'.join(lines[:i+1])
+
+		# parse ingredients
 		res = []
-		all_ingredients = re.findall(re.compile(r'^[0-9].*', re.MULTILINE), text)
+		all_ingredients = re.findall(
+			re.compile(r'^[0-9a-z].*', re.MULTILINE),
+			text
+		)
 		
 		for line in all_ingredients:
 			if ' or ' in line:
