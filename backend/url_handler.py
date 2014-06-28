@@ -4,12 +4,13 @@ from pprint import pprint
 
 from bs4 import BeautifulSoup
 
+from helper import ignore_char
+
 
 class UrlHandler(object):
 	def __init__(self, url, stop=-1):
 		self.url = url
 		self.stop = stop
-		self._ignore = ['t', 'tblsp', 'dl', 'kg', 'tbs', 'tsp', 'tbsp', 'cup', 'cups', 'l', 'g', 'oz', 'about', '/', '-', 'tablespoon', 'tablespoons', 'lb', 'lbs', 'ml', 'ts', 'tb', 'c']
 
 	def load_url(self, url):
 		req = urllib.request.Request(url)
@@ -46,7 +47,7 @@ class AlastraHandler(UrlHandler):
 				words = bar.split(' ')
 				out = []
 				for w in words:
-					if not any(char.isdigit() for char in w) and not w.lower().strip(' .()[]{}') in self._ignore:
+					if not any(char.isdigit() for char in w) and not w.lower().strip(' .()[]{}') in ignore_char:
 						out.append(w)
 				if len(out)>0: res.append(' '.join(out).strip(' \t\n\r'))
 
