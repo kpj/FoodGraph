@@ -6,7 +6,7 @@ import networkx as nx
 
 graph = nx.Graph()
 
-with open('../data/sample3.js', 'r') as fd:
+with open('../data/sample.js', 'r') as fd:
 	data = json.loads(fd.read()[11:])
 
 	for e in data:
@@ -20,4 +20,4 @@ nx.draw_networkx_nodes(graph, pos, node_size=60)
 nx.draw_networkx_edges(graph, pos, edge_color='#bbbbbb')
 nx.draw_networkx_labels(graph, pos, font_size=8)
 
-plt.savefig("simple_path.png", dpi=200)
+plt.savefig("output.png", dpi=200)
