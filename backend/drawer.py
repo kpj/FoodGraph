@@ -30,4 +30,7 @@ nx.draw_graphviz(
 	with_labels=True
 )
 
-plt.savefig(img_file, dpi=200)
+plt.savefig(
+	img_file,
+	dpi=200
+)
