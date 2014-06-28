@@ -9,6 +9,7 @@ class UrlHandler(object):
 	def __init__(self, url, stop=-1):
 		self.url = url
 		self.stop = stop
+		self._ignore = ['t', 'tblsp', 'dl', 'kg', 'tbs', 'tsp', 'tbsp', 'cup', 'cups', 'l', 'g', 'oz', 'about', '/', '-', 'tablespoon', 'tablespoons', 'lb', 'lbs', 'ml', 'ts', 'tb', 'c']
 
 	def load_url(self, url):
 		req = urllib.request.Request(url)
@@ -20,9 +21,8 @@ class UrlHandler(object):
 
 class AlastraHandler(UrlHandler):
 	def __init__(self, type, stop=-1):
-		self._base = 'http://recipes2.alastra.com/%s' % type
-		self.stop = stop
-		self._ignore = ['kg', 'tbs', 'tsp', 'tbsp', 'cup', 'cups', 'l', 'g', 'oz', 'about', '/', '-', 'tablespoon', 'tablespoons', 'lb', 'ml', 'ts', 'tb', 'c']
+		_base = 'http://recipes2.alastra.com/%s' % type
+		super().__init__(_base, stop)
 
 	def validate(self, url):
 		return re.match('[A-z0-9]+\.html', url) != None # I want a boolean
@@ -46,14 +46,14 @@ class AlastraHandler(UrlHandler):
 				words = bar.split(' ')
 				out = []
 				for w in words:
-					if not any(char.isdigit() for char in w) and not w.lower() in self._ignore:
+					if not any(char.isdigit() for char in w) and not w.lower().strip(' .()[]{}') in self._ignore:
 						out.append(w)
-				if len(out)>0: res.append(' '.join(out))
+				if len(out)>0: res.append(' '.join(out).strip(' \t\n\r'))
 
 		return res
 
 	def parse_content(self):
-		cont = self.load_url('%s/default.html' % self._base)
+		cont = self.load_url('%s/default.html' % self.url)
 		ret = []
 
 		for cell in cont.find_all('td'):
@@ -62,7 +62,7 @@ class AlastraHandler(UrlHandler):
 				href = e['href']
 				if self.validate(href):
 					ret.append(
-						self.parse_recipe('%s/%s' % (self._base, href))
+						self.parse_recipe('%s/%s' % (self.url, href))
 					)
 			if self.stop != -1 and self.stop <= len(ret): break
 		return ret
