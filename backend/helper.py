@@ -1,1 +1,1 @@
-ignore_char = ['grams', 't', 'tblsp', 'dl', 'kg', 'tbs', 'tsp', 'tbsp', 'cup', 'cups', 'l', 'g', 'oz', 'about', '/', '-', 'tablespoon', 'tablespoons', 'lb', 'lbs', 'ml', 'ts', 'tb', 'c']
+ignore_char = ['medium', 'teaspoon', 'grams', 't', 'tblsp', 'dl', 'kg', 'tbs', 'tsp', 'tbsp', 'cup', 'cups', 'l', 'g', 'oz', 'about', '/', '-', 'tablespoon', 'tablespoons', 'lb', 'lbs', 'ml', 'ts', 'tb', 'c']
