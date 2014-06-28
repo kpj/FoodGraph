@@ -5,3 +5,6 @@ This data is then put into a format which can be easily displayed by the fronten
 
 ## Used Websites
 * http://recipes2.alastra.com/default.html
+
+## Tests
+Tests can be run by calling ``nosetests``.
