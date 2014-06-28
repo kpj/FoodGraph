@@ -20,7 +20,7 @@ class AlastraParser(RecipeParser):
 				foo = [line]
 
 			for bar in foo:
-				words = bar.split(' ')
+				words = re.findall(r"[\w']+", bar)
 				out = []
 				for w in words:
 					if not any(char.isdigit() for char in w) and not w.lower().strip(' .()[]{}') in ignore_char:
