@@ -34,9 +34,8 @@ class AlastraHandler(UrlHandler):
 		text = cont.find('pre').getText()
 
 		res = []
-
-		
 		all_ingredients = re.findall(re.compile(r'^[0-9].*', re.MULTILINE), text)
+		
 		for line in all_ingredients:
 			if ' or ' in line:
 				foo = line.split(' or ')
