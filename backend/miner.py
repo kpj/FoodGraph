@@ -1,10 +1,19 @@
+import sys
+
 import url_handler, stats_handler, file_handler
 
 
-stats = stats_handler.StatsHandler()
-filer = file_handler.FileHandler('../data/sample.js')
+if len(sys.argv) != 3:
+	print('Usage: %s <food type> <path to sample>' % sys.argv[0])
+	sys.exit(1)
 
-u = url_handler.AlastraHandler('pasta', 10)
+food_type = sys.argv[1]
+sample_file = sys.argv[2]
+
+stats = stats_handler.StatsHandler()
+filer = file_handler.FileHandler(sample_file)
+
+u = url_handler.AlastraHandler(food_type, 10)
 content = u.parse_content()
 
 for e in content:
