@@ -13,7 +13,7 @@ sample_file = sys.argv[2]
 stats = stats_handler.StatsHandler()
 filer = file_handler.FileHandler(sample_file)
 
-u = url_handler.AlastraHandler(food_type, 50)
+u = url_handler.AlastraHandler(food_type, 10)
 content = u.parse_content()
 
 for e in content:
