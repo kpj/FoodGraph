@@ -2,9 +2,9 @@ import url_handler, stats_handler, file_handler
 
 
 stats = stats_handler.StatsHandler()
-filer = file_handler.FileHandler('../data/sample3.js')
+filer = file_handler.FileHandler('../data/sample.js')
 
-u = url_handler.AlastraHandler('german', 10)
+u = url_handler.AlastraHandler('pasta', 10)
 content = u.parse_content()
 
 for e in content:
