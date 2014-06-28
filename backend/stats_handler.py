@@ -1,6 +1,3 @@
-from pprint import pprint
-
-
 class StatsHandler(object):
 	def __init__(self):
 		self._core = {}
@@ -22,5 +19,9 @@ class StatsHandler(object):
 				self._core[entry][e] += 1
 
 	def info(self):
+		try:
+			from pprint import pprint
+		except:
+			pass
 		pprint(self._core)
 		print(self.ingredient_num)
