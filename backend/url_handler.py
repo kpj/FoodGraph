@@ -56,7 +56,7 @@ class AlastraHandler(UrlHandler):
 	def parse_content(self):
 		cont = self.load_url('%s/default.html' % self.url)
 		ret = []
-
+		
 		for cell in cont.find_all('td'):
 			res = cell.find_all('a')
 			for e in res:
