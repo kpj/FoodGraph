@@ -22,9 +22,12 @@ with open(sample_file, 'r') as fd:
 plt.figure(1, figsize=(14, 14))
 plt.axis('off') 
 
-pos = nx.spring_layout(graph)
-nx.draw_networkx_nodes(graph, pos, node_size=60)
-nx.draw_networkx_edges(graph, pos, edge_color='#bbbbbb')
-nx.draw_networkx_labels(graph, pos, font_size=8)
+nx.draw_graphviz(
+	graph,
+	node_size=60,
+	edge_color='#bbbbbb',
+	font_size=8,
+	with_labels=True
+)
 
 plt.savefig(img_file, dpi=200)
