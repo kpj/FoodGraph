@@ -16,7 +16,7 @@ graph = nx.Graph()
 with open(sample_file, 'r') as fd:
 	data = json.loads(fd.read()[11:])
 
-	for e in data:
+	for e in data['data']:
 		graph.add_edge(e[0], e[1], weight=e[2]*10);
 
 plt.figure(1, figsize=(14, 14))
@@ -30,6 +30,7 @@ nx.draw_graphviz(
 	font_size=8,
 	with_labels=True
 )
+plt.title('%s (%i ingredients)' % (data['props']['ftype'], data['props']['inum']))
 
 plt.savefig(
 	img_file,

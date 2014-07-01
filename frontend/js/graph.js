@@ -2,8 +2,8 @@ function setupGraph() {
 	var graph = jsnx.Graph();
 
 	// add nodes and edges
-	for(var p in data) {
-		var e = data[p];
+	for(var p in data['data']) {
+		var e = data['data'][p];
 		graph.add_edge(e[0], e[1], {weight: e[2]});
 	}
 

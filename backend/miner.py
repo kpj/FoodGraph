@@ -21,4 +21,10 @@ for e in content:
 
 #stats.info()
 
-filer.save(stats._core, stats.ingredient_num)
+filer.save(
+	stats._core,
+	{
+		'inum': stats.ingredient_num,
+		'ftype': food_type
+	}
+)
