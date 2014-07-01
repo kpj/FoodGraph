@@ -25,6 +25,7 @@ plt.axis('off')
 nx.draw_graphviz(
 	graph,
 	node_size=60,
+	linewidths=0.6,
 	edge_color='#bbbbbb',
 	font_size=8,
 	with_labels=True
