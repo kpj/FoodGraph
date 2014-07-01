@@ -144,13 +144,10 @@ desired."""
 			sorted(recipe_parser.AlastraParser.parse(text)),
 			sorted([
 				'graham cracker crumbs',
-				'sugar',
 				'cocoa',
 				'butter',
 				'margarine melted',
 				'cream cheese softened',
-				'sugar',
-				'cocoa',
 				'eggs',
 				'strong coffee',
 				'kahlua',

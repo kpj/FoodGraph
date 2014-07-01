@@ -43,4 +43,4 @@ class AlastraParser(RecipeParser):
 						out.append(w)
 				if len(out)>0: res.append(' '.join(out).strip(' \t\n\r'))
 
-		return res
+		return set(res)
