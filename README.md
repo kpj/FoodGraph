@@ -1,5 +1,7 @@
 # FoodGraph
 
+[![Build Status](https://travis-ci.org/kpj/FoodGraph.svg?branch=master)](https://travis-ci.org/kpj/FoodGraph)
+
 Displays ingredients as clusters in a graph
 
 ## Demo
