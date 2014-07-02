@@ -7,4 +7,5 @@ Displays ingredients as clusters in a graph
 ## Demo
 Click [here](https://rawgit.com/kpj/FoodGraph/master/frontend/index.html) for a dynamic demo.
 The backend also provides the ability to generate static images (click [here](https://github.com/kpj/FoodGraph/tree/master/data) for more):
-![static tree](/data/desserts.png)
+![static tree](/data/desserts-cheesecake.png)
+![static tree](/data/breads-machine.png)
