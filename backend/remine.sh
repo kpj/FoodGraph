@@ -4,9 +4,9 @@ set -u
 
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
-declare -a types=(breads-machine desserts-cheesecake dips drinks fish german pasta pies pizza)
+declare -a types=(desserts-cheesecake dips drinks fish german pasta pies pizza)
 
 for t in ${types[@]} ; do
 	echo "Mining \"$t\""
-	python miner.py "$t" "../data/$t.js"
+	python miner.py --food "$t" --sample "../data/$t.js"
 done

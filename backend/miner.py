@@ -1,19 +1,20 @@
 import sys
 
 import url_handler, stats_handler, file_handler
+from arg_parser import miner_argparse as get_args
 
 
-if len(sys.argv) != 3:
-	print('Usage: %s <food type> <path to sample>' % sys.argv[0])
-	sys.exit(1)
+args = vars(get_args())
 
-food_type = sys.argv[1]
-sample_file = sys.argv[2]
+food_type = args['food']
+sample_file = args['sample']
+recipe_num = args['number']
+
 
 stats = stats_handler.StatsHandler()
 filer = file_handler.FileHandler(sample_file)
 
-u = url_handler.AlastraHandler(food_type, 10)
+u = url_handler.AlastraHandler(food_type, recipe_num)
 content = u.parse_content()
 
 for e in content:
