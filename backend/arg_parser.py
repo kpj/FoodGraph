@@ -44,7 +44,8 @@ def miner_argparse():
 		help="type of food to search for",
 		type=str,
 		metavar="<food type>",
-		required=True
+		required=True,
+		nargs='+'
 	)
 	parser.add_argument(
 		"-s",
