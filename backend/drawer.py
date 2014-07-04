@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 
 from arg_parser import drawer_argparse as get_args
+from draw_config import config
 
 
 args = vars(get_args())
@@ -33,8 +34,8 @@ if drawing_mode == 'opacity':
 	pos = nx.graphviz_layout(graph)
 	nx.draw_networkx_nodes(
 		graph, pos, 
-		node_size=60,
-		linewidths=0.6
+		node_size=config['node_size'],
+		linewidths=config['node_border_width']
 	)
 	for weight in tdata:
 		nx.draw_networkx_edges(
@@ -44,16 +45,16 @@ if drawing_mode == 'opacity':
 		)
 	nx.draw_networkx_labels(
 		graph, pos,
-		font_size=8,
-		font_color='blue'
+		font_size=config['label_size'],
+		font_color=config['label_color']
 	)
 elif drawing_mode == 'solid':
 	nx.draw_graphviz(
 		graph,
-		node_size=60,
-		linewidths=0.6,
-		edge_color='#bbbbbb',
-		font_size=8,
+		node_size=config['node_size'],
+		linewidths=config['node_border_width'],
+		edge_color=config['solid_edge_color'],
+		font_size=config['label_size'],
 		with_labels=True
 	)
 
